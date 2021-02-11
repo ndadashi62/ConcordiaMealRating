@@ -20,6 +20,14 @@
         android:textSize="30dp"
         android:textStyle="bold">
     </TextView>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+    </Spinner>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,6 +67,7 @@
         android:layout_marginTop="30dp"
         >
        <Button
+           android:id="@+id/btnAdd"
            android:layout_width="120dp"
            android:layout_height="wrap_content"
            android:layout_marginRight="5dp"
@@ -71,6 +80,7 @@
        </Button>
 
         <Button
+            android:id="@+id/btnShowall"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -94,6 +104,7 @@
         android:layout_marginTop="30dp"
         >
         <Button
+            android:id="@+id/btnMeal"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
@@ -106,6 +117,7 @@
         </Button>
 
         <Button
+            android:id="@+id/btnSalad"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -118,6 +130,7 @@
 
 
     </LinearLayout>
+
 
 
 </LinearLayout>
