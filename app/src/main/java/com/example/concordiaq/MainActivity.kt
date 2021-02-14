@@ -8,22 +8,35 @@ import android.widget.RatingBar.OnRatingBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
 
 
     var customerRates: String = ""
-    val meals = arrayOf("salmon", "Poutine", "Sushi", "Tacos")
-    val salad = arrayOf("Chicken salad", "Montreal", "Green salad")
+    private val meals = arrayOf("salmon", "Poutine", "Sushi", "Tacos")
+    private val salad = arrayOf("Chicken salad", "Montreal", "Green salad")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        myRatingBar.setOnRatingBarChangeListener(object : OnRatingBarChangeListener {
+
+            override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
+                textveiwRate.text = p1.toString()
+            }
+        })
+
         btnMeal.setOnClickListener {
             mealSpinner()
+
+
         }
 
         btnSalad.setOnClickListener {
             saladSpinner()
+
         }
         btnShowall.setOnClickListener {
             gotoResultPageAndShowList()
@@ -47,6 +60,9 @@ class MainActivity : AppCompatActivity() {
                     parent: AdapterView<*>,
                     view: View, position: Int, id: Long
                 ) {
+                    // Notify the selected item text
+                    val selectedmealtext = parent.getItemAtPosition(position) as String
+                    textviewspinner.text = selectedmealtext
 
                 }
 
@@ -71,6 +87,9 @@ class MainActivity : AppCompatActivity() {
                     parent: AdapterView<*>,
                     view: View, position: Int, id: Long
                 ) {
+                    // Notify the selected item text
+                    val selectedSAladtext = parent.getItemAtPosition(position) as String
+                    textviewspinner.text = selectedSAladtext
 
                 }
 
