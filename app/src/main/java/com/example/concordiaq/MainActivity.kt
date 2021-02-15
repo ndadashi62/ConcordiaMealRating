@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     fun gotoResultPageAndShowList() {
         val resultIntent = Intent(this@MainActivity, ReslutActivity::class.java)
+        startActivity(resultIntent)
     }
 
     fun mealSpinner() {
