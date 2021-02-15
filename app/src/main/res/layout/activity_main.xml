@@ -74,11 +74,11 @@
             android:progressTint="#FF4081">
 
         </RatingBar>
+
         <TextView
             android:id="@+id/textveiwRate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
         </TextView>
     </LinearLayout>

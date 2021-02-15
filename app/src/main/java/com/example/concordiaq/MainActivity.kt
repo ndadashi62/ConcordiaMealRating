@@ -1,5 +1,6 @@
 package com.example.concordiaq
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -12,9 +13,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 
-    var customerRates: String = ""
     private val meals = arrayOf("salmon", "Poutine", "Sushi", "Tacos")
     private val salad = arrayOf("Chicken salad", "Montreal", "Green salad")
+    var reportList = ArrayList<ReportListClass>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
                 textveiwRate.text = p1.toString()
+
+                var reportListClass = ReportListClass(selectedItem = textviewspinner.text.toString(), rate = p1)
+                reportList.add(reportListClass)
             }
         })
 
@@ -47,6 +52,13 @@ class MainActivity : AppCompatActivity() {
     fun gotoResultPageAndShowList() {
         val resultIntent = Intent(this@MainActivity, ReslutActivity::class.java)
         startActivity(resultIntent)
+
+        var bundle = Bundle()
+        bundle.putSerializable("bundleContent", reportList)
+        resultIntent.putExtra("reportlistArray", bundle)
+
+        startActivity(resultIntent)
+
     }
 
     fun mealSpinner() {
@@ -64,6 +76,8 @@ class MainActivity : AppCompatActivity() {
                     // Notify the selected item text
                     val selectedmealtext = parent.getItemAtPosition(position) as String
                     textviewspinner.text = selectedmealtext
+
+
 
                 }
 
@@ -89,8 +103,9 @@ class MainActivity : AppCompatActivity() {
                     view: View, position: Int, id: Long
                 ) {
                     // Notify the selected item text
-                    val selectedSAladtext = parent.getItemAtPosition(position) as String
-                    textviewspinner.text = selectedSAladtext
+                    val selectedSaladText = parent.getItemAtPosition(position) as String
+                    textviewspinner.text = selectedSaladText
+
 
                 }
 
